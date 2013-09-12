@@ -118,6 +118,9 @@ delete_request:function(resource,input) {
 ,get_user:function(id) {
 	return this.get_request("user/" + id,"");
 }
+,get_user_stats:function(id,type) {
+	return this.get_request("user/" + id + "/" + type,"");
+}
 ,create_user:function(attributes,blacklisted,email,listid) {
 	return this.post_request("user",JSON.stringify({"attributes":attributes,"blacklisted":blacklisted,"email":email,"listid":listid}));
 }
