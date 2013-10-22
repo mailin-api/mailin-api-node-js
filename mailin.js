@@ -38,7 +38,7 @@ delete_request:function(resource,input) {
 	return this.get_request("account","");
 }
 ,send_sms:function(text,tag,web_url,sms_from,sms_to) {
-	return this.post_request("sms",JSON.stringify({"text":text,"tag":tag,"web_url":web_url,"sms_from":sms_from,"sms_to":sms_to}));
+	return this.post_request("sms",JSON.stringify({"text":text,"tag":tag,"web_url":web_url,"from":sms_from,"to":sms_to}));
 }
 ,get_campaigns:function() {
 	return this.get_request("campaign","");
