@@ -95,7 +95,7 @@ delete_request:function(resource,input) {
 	return this.delete_request("list/" + id + "/users",JSON.stringify({"users":users}));
 }
 ,send_email:function(cc,text,bcc,replyto,html,email_to,attachment,email_from,subject) {
-	return this.post_request("email",JSON.stringify({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"email_to":email_to,"attachment":attachment,"email_from":email_from,"subject":subject}));
+	return this.post_request("email",JSON.stringify({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":email_to,"attachment":attachment,"from":email_from,"subject":subject}));
 }
 ,get_webhooks:function() {
 	return this.get_request("webhook","");
