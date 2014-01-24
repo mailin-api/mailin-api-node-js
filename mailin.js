@@ -37,23 +37,23 @@ delete_request:function(resource,input) {
 ,get_account:function() {
 	return this.get_request("account","");
 }
-,send_sms:function(text,tag,web_url,sms_from,sms_to) {
-	return this.post_request("sms",JSON.stringify({"text":text,"tag":tag,"web_url":web_url,"from":sms_from,"to":sms_to}));
+,send_sms:function(to,from,text,web_url,tag) {
+	return this.post_request("sms",JSON.stringify({"text":text,"tag":tag,"web_url":web_url,"from":from,"to":to}));
 }
-,get_campaigns:function() {
-	return this.get_request("campaign","");
+,get_campaigns:function(type) {
+	return this.get_request("campaign",JSON.stringify({"type":type}));
 }
 ,get_campaign:function(id) {
 	return this.get_request("campaign/" + id,"");
 }
-,create_campaign:function(category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject) {
-	return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject}));
+,create_campaign:function(category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email) {
+	return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email}));
 }
 ,delete_campaign:function(id) {
 	return this.delete_request("campaign/" + id,"");
 }
-,update_campaign:function(id,category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject) {
-	return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject}));
+,update_campaign:function(id,category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email) {
+	return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email}));
 }
 ,campaign_report_email:function(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body) {
 	return this.post_request("campaign/" + id + "/report",JSON.stringify({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}));
@@ -66,12 +66,6 @@ delete_request:function(resource,input) {
 }
 ,get_process:function(id) {
 	return this.get_request("process/" + id,"");
-}
-,get_campaignstats:function() {
-	return this.get_request("campaignstat","");
-}
-,get_campaignstat:function(id) {
-	return this.get_request("campaignstat/" + id,"");
 }
 ,get_lists:function() {
 	return this.get_request("list","");
@@ -94,8 +88,8 @@ delete_request:function(resource,input) {
 ,delete_users_list:function(id,users) {
 	return this.delete_request("list/" + id + "/users",JSON.stringify({"users":users}));
 }
-,send_email:function(cc,text,bcc,replyto,html,email_to,attachment,email_from,subject) {
-	return this.post_request("email",JSON.stringify({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":email_to,"attachment":attachment,"from":email_from,"subject":subject}));
+,send_email:function(to,subject,from,html,text,cc,bcc,replyto,attachment,headers) {
+	return this.post_request("email",JSON.stringify({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":to,"attachment":attachment,"from":from,"subject":subject,"headers":headers}));
 }
 ,get_webhooks:function() {
 	return this.get_request("webhook","");
@@ -127,8 +121,8 @@ delete_request:function(resource,input) {
 ,delete_user:function(id) {
 	return this.delete_request("user/" + id,"");
 }
-,update_user:function(id,attributes,blacklisted,listid) {
-	return this.put_request("user/" + id,JSON.stringify({"attributes":attributes,"blacklisted":blacklisted,"listid":listid}));
+,update_user:function(id,attributes,blacklisted,listid,listid_unlink) {
+	return this.put_request("user/" + id,JSON.stringify({"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink}));
 }
 ,import_users:function(url,listids,notify_url,name) {
 	return this.post_request("user/import",JSON.stringify({"url":url,"listids":listids,"notify_url":notify_url,"name":name}));
