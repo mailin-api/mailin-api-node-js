@@ -46,14 +46,14 @@ delete_request:function(resource,input) {
 ,get_campaign:function(id) {
 	return this.get_request("campaign/" + id,"");
 }
-,create_campaign:function(category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email) {
-	return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email}));
+,create_campaign:function(category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to) {
+	return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to}));
 }
 ,delete_campaign:function(id) {
 	return this.delete_request("campaign/" + id,"");
 }
-,update_campaign:function(id,category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email) {
-	return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email}));
+,update_campaign:function(id,category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to) {
+	return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to}));
 }
 ,campaign_report_email:function(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body) {
 	return this.post_request("campaign/" + id + "/report",JSON.stringify({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}));
