@@ -82,6 +82,9 @@ delete_request:function(resource,input) {
 ,update_list:function(id,list_name,list_parent) {
 	return this.put_request("list/" + id,JSON.stringify({"list_name":list_name,"list_parent":list_parent}));
 }
+,display_list_users:function(listids,page,page_limit) {
+    return this.get_request("list/display",JSON.stringify({"listids":listids,"page":page,"page_limit":page_limit}));
+}
 ,add_users_list:function(id,users) {
 	return this.post_request("list/" + id + "/users",JSON.stringify({"users":users}));
 }
@@ -162,6 +165,9 @@ delete_request:function(resource,input) {
 }
 ,delete_bounces:function(start_date,end_date,email) {
 	return this.post_request("bounces",JSON.stringify({"start_date":start_date,"end_date":end_date,"email":email}));
+}
+,send_transactional_template:function(id,to,cc,bcc,attr) {
+    return this.put_request("template/" + id,JSON.stringify({"cc"=>cc,"to"=>to,"attr"=>attr,"bcc"=>bcc}));
 }
 });
 
