@@ -37,8 +37,8 @@ delete_request:function(resource,input) {
 ,get_account:function() {
 	return this.get_request("account","");
 }
-,send_sms:function(to,from,text,web_url,tag) {
-	return this.post_request("sms",JSON.stringify({"text":text,"tag":tag,"web_url":web_url,"from":from,"to":to}));
+,send_sms:function(to,from,text,web_url,tag,type) {
+	return this.post_request("sms",JSON.stringify({"text":text,"tag":tag,"web_url":web_url,"from":from,"to":to,"type":type}));
 }
 ,get_campaigns:function(type) {
 	return this.get_request("campaign",JSON.stringify({"type":type}));
