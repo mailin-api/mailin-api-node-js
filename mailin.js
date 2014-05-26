@@ -32,7 +32,7 @@ put_request:function(resource,input) {
         return this.do_request(resource,"PUT",input);
 },
 delete_request:function(resource,input) {
-        return this.do_request(resource,"DEL",input);
+        return this.do_request(resource,"DELETE",input);
 }
 ,get_account:function() {
 	return this.get_request("account","");
