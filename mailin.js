@@ -37,8 +37,32 @@ delete_request:function(resource,input) {
 ,get_account:function() {
 	return this.get_request("account","");
 }
+,create_child_account:function(email,password,company_org,first_name,last_name,credits) {
+    return this.post_request("account",JSON.stringify({"child_email":email,"password":password,"company_org":company_org,"first_name":first_name,"last_name":last_name,"credits":credits}));
+}
+,update_child_account:function(child_authkey,company_org,first_name,last_name,password) {
+    return this.put_request("account",JSON.stringify({"auth_key":child_authkey,"company_org":company_org,"first_name":first_name,"last_name":last_name,"password":password}));
+}
+,delete_child_account:function(child_authkey) {
+    return this.delete_request("account/" + child_authkey,"");
+}
+,get_child_account:function(child_authkey) {
+    return this.get_request("account/getchild",JSON.stringify({"auth_key":child_authkey}));
+}
+,add_remove_child_credits:function(child_authkey,add_credits,remove_credits) {
+    return this.post_request("account/addrmvcredit",JSON.stringify({"auth_key":child_authkey,"add_credit":add_credits,"rmv_credit":remove_credits}));
+}
 ,send_sms:function(to,from,text,web_url,tag,type) {
 	return this.post_request("sms",JSON.stringify({"text":text,"tag":tag,"web_url":web_url,"from":from,"to":to,"type":type}));
+}
+,create_sms_campaign:function(camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) {
+    return this.post_request("sms",JSON.stringify({"name":camp_name,"sender":sender,"content":content,"bat":bat_sent,"listid":listids,"exclude_list":exclude_list,"scheduled_date":scheduled_date}));
+}
+,update_sms_campaign:function(id,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) {
+    return this.put_request("sms/" + id,JSON.stringify({"name":camp_name,"sender":sender,"content":content,"bat":bat_sent,"listid":listids,"exclude_list":exclude_list,"scheduled_date":scheduled_date}));
+}
+,send_bat_sms:function(campid,mobilephone) {
+   return this.get_request("sms/" + campid,JSON.stringify({"to":mobilephone}));
 }
 ,get_campaigns:function(type) {
 	return this.get_request("campaign",JSON.stringify({"type":type}));
@@ -60,6 +84,18 @@ delete_request:function(resource,input) {
 }
 ,campaign_recipients_export:function(id,notify_url,type) {
 	return this.post_request("campaign/" + id + "/report",JSON.stringify({"notify_url":notify_url,"type":type}));
+}
+,send_bat_email:function(campid,email_to) {
+    return this.post_request("campaign/" + campid + "/test",JSON.stringify({"emails":email_to}));
+}
+,create_trigger_campaign:function(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) {
+    return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}));
+}
+,update_trigger_campaign:function(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) {
+    return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}));
+}
+,campaign_share_link:function(campaign_ids) {
+    return this.post_request("campaign/sharelink",JSON.stringify({"camp_ids":campaign_ids}));
 }
 ,get_processes:function() {
 	return this.get_request("process","");
@@ -127,8 +163,11 @@ delete_request:function(resource,input) {
 ,import_users:function(url,listids,notify_url,name) {
 	return this.post_request("user/import",JSON.stringify({"url":url,"listids":listids,"notify_url":notify_url,"name":name}));
 }
-,export_users:function(export_attrib,filer,notify_url) {
-	return this.post_request("user/export",JSON.stringify({"export_attrib":export_attrib,"filer":filer,"notify_url":notify_url}));
+,export_users:function(export_attrib,filter,notify_url) {
+	return this.post_request("user/export",JSON.stringify({"export_attrib":export_attrib,"filter":filter,"notify_url":notify_url}));
+}
+,create_update_user:function(email,attributes,blacklisted,listid,listid_unlink) {
+      return this.post_request("user/createdituser",JSON.stringify({"email":email,"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink}));
 }
 ,get_attributes:function() {
 	return this.get_request("attribute","");
@@ -164,7 +203,25 @@ delete_request:function(resource,input) {
 	return this.post_request("bounces",JSON.stringify({"start_date":start_date,"end_date":end_date,"email":email}));
 }
 ,send_transactional_template:function(id,to,cc,bcc,attr) {
-    return this.put_request("template/" + id,JSON.stringify({"cc"=>cc,"to"=>to,"attr"=>attr,"bcc"=>bcc}));
+    return this.put_request("template/" + id,JSON.stringify({"cc":cc,"to":to,"attr":attr,"bcc":bcc}));
+}
+,create_template:function(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) {
+    return this.post_request("template",JSON.stringify({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}));
+}
+,update_template:function(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) {
+    return this.put_request("template/" + id,JSON.stringify({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}));
+}
+,get_senders:function(option) {
+    return this.get_request("advanced",JSON.stringify({"option":option}));
+}
+,create_sender:function(sender_name,sender_email,ip_domain) {
+    return this.post_request("advanced",JSON.stringify({"name":sender_name,"email":sender_email,"ip_domain":ip_domain}));
+}
+,update_sender:function(id,sender_name,sender_email,ip_domain) {
+    return this.put_request("advanced/" + id,JSON.stringify({"name":sender_name,"email":sender_email,"ip_domain":ip_domain}));
+}
+,delete_sender:function(id) {
+    return this.delete_request("advanced/" + id,"");
 }
 });
 
