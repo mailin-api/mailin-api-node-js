@@ -47,7 +47,7 @@ delete_request:function(resource,input) {
     return this.delete_request("account/" + child_authkey,"");
 }
 ,get_child_account:function(child_authkey) {
-    return this.get_request("account/getchild",JSON.stringify({"auth_key":child_authkey}));
+    return this.post_request("account/getchild",JSON.stringify({"auth_key":child_authkey}));
 }
 ,add_remove_child_credits:function(child_authkey,add_credits,remove_credits) {
     return this.post_request("account/addrmvcredit",JSON.stringify({"auth_key":child_authkey,"add_credit":add_credits,"rmv_credit":remove_credits}));
