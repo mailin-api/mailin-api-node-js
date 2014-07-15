@@ -97,6 +97,9 @@ delete_request:function(resource,input) {
 ,campaign_share_link:function(campaign_ids) {
     return this.post_request("campaign/sharelink",JSON.stringify({"camp_ids":campaign_ids}));
 }
+,update_campaign_status:function(id,status) {
+    return this.put_request("campaign/" + id + "/updatecampstatus",JSON.stringify({"status":status}));
+}
 ,get_processes:function() {
 	return this.get_request("process","");
 }
