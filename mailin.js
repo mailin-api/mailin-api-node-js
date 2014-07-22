@@ -64,8 +64,8 @@ delete_request:function(resource,input) {
 ,send_bat_sms:function(campid,mobilephone) {
    return this.get_request("sms/" + campid,JSON.stringify({"to":mobilephone}));
 }
-,get_campaigns:function(type) {
-	return this.get_request("campaign",JSON.stringify({"type":type}));
+,get_campaigns:function(type,status,page,page_limit) {
+	return this.get_request("campaign",JSON.stringify({"type":type,"status":status,"page":page,"page_limit":page_limit}));
 }
 ,get_campaign:function(id) {
 	return this.get_request("campaign/" + id,"");
