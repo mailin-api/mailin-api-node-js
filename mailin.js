@@ -169,8 +169,8 @@ delete_request:function(resource,input) {
 ,export_users:function(export_attrib,filter,notify_url) {
 	return this.post_request("user/export",JSON.stringify({"export_attrib":export_attrib,"filter":filter,"notify_url":notify_url}));
 }
-,create_update_user:function(email,attributes,blacklisted,listid,listid_unlink) {
-      return this.post_request("user/createdituser",JSON.stringify({"email":email,"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink}));
+,create_update_user:function(email,attributes,blacklisted,listid,listid_unlink,blacklisted_sms) {
+      return this.post_request("user/createdituser",JSON.stringify({"email":email,"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink,"blacklisted_sms":blacklisted_sms}));
 }
 ,get_attributes:function() {
 	return this.get_request("attribute","");
