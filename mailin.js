@@ -37,6 +37,9 @@ delete_request:function(resource,input) {
 ,get_account:function() {
 	return this.get_request("account","");
 }
+,get_smtp_details:function() {
+	return this.get_request("account/smtpdetail","");
+}
 ,create_child_account:function(email,password,company_org,first_name,last_name,credits) {
     return this.post_request("account",JSON.stringify({"child_email":email,"password":password,"company_org":company_org,"first_name":first_name,"last_name":last_name,"credits":credits}));
 }
