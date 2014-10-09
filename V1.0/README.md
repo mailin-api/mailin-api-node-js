@@ -1,6 +1,6 @@
-# SendinBlue node js API
+# SendinBlue node js library
 
-This is the SendinBlue node js API, that can be easily integrated in your node.js application. You need to have the following libraries, which you can install using npm
+This is the official SendinBlue node js library, that can be easily integrated in your node.js application. You need to have the following libraries, which you can install using npm
 * Restler
 
 It currently supports all the API calls for v1.0. Each call returns an Object that is documented in our API docs, here are the objects.
