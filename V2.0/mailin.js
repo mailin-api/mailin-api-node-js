@@ -6,8 +6,9 @@ Mailin = rest.service(function(base_url,api_key) {
 },{},{
 do_request:function(resource,method,input) {
 	var called_url = this.base_url + "/" + resource;
+	var content_type = "application/json";
 	// Make the call
-	return this.request(called_url,{method:method,headers:{'api-key':this.api_key},data:input});
+	return this.request(called_url,{method:method,headers:{'api-key':this.api_key,"content-type":content_type},data:input});
 },
 get_request:function(resource,input) {
 	return this.do_request(resource,"GET",input);
