@@ -20,7 +20,7 @@ client.get_campaigns().on('complete', function(data) {
 
 ## Available functions
 
-List of API calls that you can make. Please do note that the order of parameters are important.
+List of API calls that you can make, you can click to read more about it. Please do note that the order of parameters are important.
 
 ### Campaign calls
 
