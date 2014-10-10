@@ -5,12 +5,12 @@ This is the official SendinBlue Node.js library, that can be easily integrated i
 
 ## Quickstart
 
-1. You will need to first get the Access key and Secret key from [SendinBlue](https://www.sendinblue.com).
+1. You will need to first get the Access key from [SendinBlue](https://www.sendinblue.com).
 
 2. Assuming that you have cloned this git repo, or downloaded mailin.js . You can use this small sample script to get started
 ```javascript
 require("../mailin.js");
-var client = new Mailin("https://api.sendinblue.com/v1.0","<access key>","<secret key>");
+var client = new Mailin("https://api.sendinblue.com/v2.0","<access key>");
 client.get_campaigns().on('complete', function(data) {
         console.log(data);
 });
