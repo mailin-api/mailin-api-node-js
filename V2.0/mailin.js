@@ -37,8 +37,8 @@ delete_request:function(resource,input) {
 ,delete_child_account:function(child_authkey) {
     return this.delete_request("account/" + child_authkey,"");
 }
-,get_child_account:function(child_authkey) {
-    return this.post_request("account/getchild",JSON.stringify({"auth_key":child_authkey}));
+,get_reseller_child:function(child_authkey) {
+    return this.post_request("account/getchildv2",JSON.stringify({"auth_key":child_authkey}));
 }
 ,add_remove_child_credits:function(child_authkey,add_credits,remove_credits) {
     return this.post_request("account/addrmvcredit",JSON.stringify({"auth_key":child_authkey,"add_credit":add_credits,"rmv_credit":remove_credits}));
@@ -55,11 +55,11 @@ delete_request:function(resource,input) {
 ,send_bat_sms:function(campid,mobilephone) {
    return this.get_request("sms/" + campid,JSON.stringify({"to":mobilephone}));
 }
-,get_campaigns:function(type,status,page,page_limit) {
-	return this.get_request("campaign",JSON.stringify({"type":type,"status":status,"page":page,"page_limit":page_limit}));
+,get_campaigns_v2:function(type,status,page,page_limit) {
+	return this.get_request("campaign/detailsv2",JSON.stringify({"type":type,"status":status,"page":page,"page_limit":page_limit}));
 }
-,get_campaign:function(id) {
-	return this.get_request("campaign/" + id,"");
+,get_campaign_v2:function(id) {
+	return this.get_request("campaign/" + id + "/detailsv2","");
 }
 ,create_campaign:function(category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list) {
 	return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"exclude_list":exclude_list}));
@@ -85,8 +85,8 @@ delete_request:function(resource,input) {
 ,update_trigger_campaign:function(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) {
     return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}));
 }
-,campaign_share_link:function(campaign_ids) {
-    return this.post_request("campaign/sharelink",JSON.stringify({"camp_ids":campaign_ids}));
+,share_campaign:function(campaign_ids) {
+    return this.post_request("campaign/sharelinkv2",JSON.stringify({"camp_ids":campaign_ids}));
 }
 ,update_campaign_status:function(id,status) {
     return this.put_request("campaign/" + id + "/updatecampstatus",JSON.stringify({"status":status}));
