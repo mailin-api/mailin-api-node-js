@@ -91,14 +91,14 @@ delete_request:function(resource,input) {
 ,update_campaign_status:function(id,status) {
     return this.put_request("campaign/" + id + "/updatecampstatus",JSON.stringify({"status":status}));
 }
-,get_processes:function() {
-	return this.get_request("process","");
+,get_processes:function(page,page_limit) {
+	return this.get_request("process",JSON.stringify({"page":page,"page_limit":page_limit}));
 }
 ,get_process:function(id) {
 	return this.get_request("process/" + id,"");
 }
-,get_lists:function() {
-	return this.get_request("list","");
+,get_lists:function(page,page_limit) {
+	return this.get_request("list",JSON.stringify({"page":page,"page_limit":page_limit}));
 }
 ,get_list:function(id) {
 	return this.get_request("list/" + id,"");
@@ -178,8 +178,8 @@ delete_request:function(resource,input) {
 ,get_report:function(limit,start_date,end_date,offset,date,days,email) {
 	return this.post_request("report",JSON.stringify({"limit":limit,"start_date":start_date,"end_date":end_date,"offset":offset,"date":date,"days":days,"email":email}));
 }
-,get_folders:function() {
-	return this.get_request("folder","");
+,get_folders:function(page,page_limit) {
+	return this.get_request("folder",JSON.stringify({"page":page,"page_limit":page_limit}));
 }
 ,get_folder:function(id) {
 	return this.get_request("folder/" + id,"");
