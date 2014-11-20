@@ -124,14 +124,14 @@ delete_request:function(resource,input) {
 ,send_email:function(to,subject,from,html,text,cc,bcc,replyto,attachment,headers) {
 	return this.post_request("email",JSON.stringify({"cc":cc,"text":text,"bcc":bcc,"replyto":replyto,"html":html,"to":to,"attachment":attachment,"from":from,"subject":subject,"headers":headers}));
 }
-,get_webhooks:function() {
-	return this.get_request("webhook","");
+,get_webhooks:function(is_plat) {
+	return this.get_request("webhook",JSON.stringify({"is_plat":is_plat}));
 }
 ,get_webhook:function(id) {
 	return this.get_request("webhook/" + id,"");
 }
-,create_webhook:function(url,description,events) {
-	return this.post_request("webhook",JSON.stringify({"url":url,"description":description,"events":events}));
+,create_webhook:function(url,description,events,is_plat) {
+	return this.post_request("webhook",JSON.stringify({"url":url,"description":description,"events":events,"is_plat":is_plat}));
 }
 ,delete_webhook:function(id) {
 	return this.delete_request("webhook/" + id,"");
