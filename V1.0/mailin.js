@@ -73,14 +73,14 @@ delete_request:function(resource,input) {
 ,get_campaign:function(id) {
 	return this.get_request("campaign/" + id,"");
 }
-,create_campaign:function(category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list) {
-	return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"exclude_list":exclude_list}));
+,create_campaign:function(category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list,attachmentUrl,inline_image) {
+	return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"exclude_list":exclude_list,"attachment_url":attachmentUrl,"inline_image":inline_image}));
 }
 ,delete_campaign:function(id) {
 	return this.delete_request("campaign/" + id,"");
 }
-,update_campaign:function(id,category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list) {
-	return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"exclude_list":exclude_list}));
+,update_campaign:function(id,category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list,attachmentUrl,inline_image) {
+	return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"name":name,"bat_sent":bat_sent,"tags":tags,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"exclude_list":exclude_list,"attachment_url":attachmentUrl,"inline_image":inline_image}));
 }
 ,campaign_report_email:function(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body) {
 	return this.post_request("campaign/" + id + "/report",JSON.stringify({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}));
@@ -91,11 +91,11 @@ delete_request:function(resource,input) {
 ,send_bat_email:function(campid,email_to) {
     return this.post_request("campaign/" + campid + "/test",JSON.stringify({"emails":email_to}));
 }
-,create_trigger_campaign:function(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) {
-    return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}));
+,create_trigger_campaign:function(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring,attachmentUrl,inline_image) {
+    return this.post_request("campaign",JSON.stringify({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring,"attachment_url":attachmentUrl,"inline_image":inline_image}));
 }
-,update_trigger_campaign:function(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) {
-    return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring}));
+,update_trigger_campaign:function(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring,attachmentUrl,inline_image) {
+    return this.put_request("campaign/" + id,JSON.stringify({"category":category,"from_name":from_name,"trigger_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"listid":listid,"scheduled_date":scheduled_date,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"exclude_list":exclude_list,"recurring":recurring,"attachment_url":attachmentUrl,"inline_image":inline_image}));
 }
 ,campaign_share_link:function(campaign_ids) {
     return this.post_request("campaign/sharelink",JSON.stringify({"camp_ids":campaign_ids}));
@@ -208,14 +208,14 @@ delete_request:function(resource,input) {
 ,delete_bounces:function(start_date,end_date,email) {
 	return this.post_request("bounces",JSON.stringify({"start_date":start_date,"end_date":end_date,"email":email}));
 }
-,send_transactional_template:function(id,to,cc,bcc,attr) {
-    return this.put_request("template/" + id,JSON.stringify({"cc":cc,"to":to,"attr":attr,"bcc":bcc}));
+,send_transactional_template:function(id,to,cc,bcc,attr,attachmentUrl,attachment) {
+    return this.put_request("template/" + id,JSON.stringify({"cc":cc,"to":to,"attr":attr,"bcc":bcc,"attachment_url":attachmentUrl,"attachment":attachment}));
 }
-,create_template:function(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) {
-    return this.post_request("template",JSON.stringify({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}));
+,create_template:function(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach) {
+    return this.post_request("template",JSON.stringify({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status,"attachment":attach}));
 }
-,update_template:function(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) {
-    return this.put_request("template/" + id,JSON.stringify({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status}));
+,update_template:function(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach) {
+    return this.put_request("template/" + id,JSON.stringify({"from_name":from_name,"template_name":name,"bat":bat_sent,"html_content":html_content,"html_url":html_url,"subject":subject,"from_email":from_email,"reply_to":reply_to,"to_field":to_field,"status":status,"attachment":attach}));
 }
 ,get_senders:function(option) {
     return this.get_request("advanced",JSON.stringify({"option":option}));
