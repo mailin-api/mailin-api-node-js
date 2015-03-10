@@ -154,8 +154,8 @@ delete_request:function(resource,input) {
 ,update_user:function(id,attributes,blacklisted,listid,listid_unlink) {
 	return this.put_request("user/" + id,JSON.stringify({"attributes":attributes,"blacklisted":blacklisted,"listid":listid,"listid_unlink":listid_unlink}));
 }
-,import_users:function(url,listids,notify_url,name) {
-	return this.post_request("user/import",JSON.stringify({"url":url,"listids":listids,"notify_url":notify_url,"name":name}));
+,import_users:function(url,listids,notify_url,name,folder_id) {
+	return this.post_request("user/import",JSON.stringify({"url":url,"listids":listids,"notify_url":notify_url,"name":name,"list_parent":folder_id}));
 }
 ,export_users:function(export_attrib,filter,notify_url) {
 	return this.post_request("user/export",JSON.stringify({"export_attrib":export_attrib,"filter":filter,"notify_url":notify_url}));

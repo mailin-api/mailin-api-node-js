@@ -63,7 +63,7 @@ List of API calls that you can make, you can click to read more about it. Please
  * [get_user](https://apidocs.sendinblue.com/user/#2)(email) - Get information about a user/email
  * [create_update_user](https://apidocs.sendinblue.com/user/#1)(email,attributes,blacklisted,listid,listid_unlink,blacklisted_sms) - Create/Update a user information
  * [delete_user](https://apidocs.sendinblue.com/user/#4)(email) - Deleting user from db is not permitted but this action will unlink him from all lists
- * [import_users](https://apidocs.sendinblue.com/user/#5)(url,listids,notify_url,name) - Import users/emails
+ * [import_users](https://apidocs.sendinblue.com/user/#5)(url,listids,notify_url,name,folder_id) - Import users/emails
  * [export_users](https://apidocs.sendinblue.com/user/#6)(export_attrib,filter,notify_url) - Export users/emails
  * [get_processes](https://apidocs.sendinblue.com/process/#1)(page,page_limit) - Get information about all background processes
  * [get_process](https://apidocs.sendinblue.com/process/#2)(id) - Get information about a specific process
@@ -87,7 +87,7 @@ List of API calls that you can make, you can click to read more about it. Please
  * [create_template](https://apidocs.sendinblue.com/template/#2)(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach) - Create a template 
  * [update_template](https://apidocs.sendinblue.com/template/#3)(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach) - Update template information
 
-### SMS call
+### SMS calls
 
  * [send_sms](https://apidocs.sendinblue.com/mailin-sms/#1)(to,from,text,web_url,tag,type) - Sending a SMS
  * [create_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#2)(camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) - Create a SMS campaign
