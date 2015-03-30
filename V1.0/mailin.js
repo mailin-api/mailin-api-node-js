@@ -40,11 +40,11 @@ delete_request:function(resource,input) {
 ,get_smtp_details:function() {
 	return this.get_request("account/smtpdetail","");
 }
-,create_child_account:function(email,password,company_org,first_name,last_name,credits) {
-    return this.post_request("account",JSON.stringify({"child_email":email,"password":password,"company_org":company_org,"first_name":first_name,"last_name":last_name,"credits":credits}));
+,create_child_account:function(email,password,company_org,first_name,last_name,credits,associate_ip) {
+    return this.post_request("account",JSON.stringify({"child_email":email,"password":password,"company_org":company_org,"first_name":first_name,"last_name":last_name,"credits":credits,"associate_ip":associate_ip}));
 }
-,update_child_account:function(child_authkey,company_org,first_name,last_name,password) {
-    return this.put_request("account",JSON.stringify({"auth_key":child_authkey,"company_org":company_org,"first_name":first_name,"last_name":last_name,"password":password}));
+,update_child_account:function(child_authkey,company_org,first_name,last_name,password,associate_ip,disassociate_ip) {
+    return this.put_request("account",JSON.stringify({"auth_key":child_authkey,"company_org":company_org,"first_name":first_name,"last_name":last_name,"password":password,"associate_ip":associate_ip,"disassociate_ip":disassociate_ip}));
 }
 ,delete_child_account:function(child_authkey) {
     return this.delete_request("account/" + child_authkey,"");
