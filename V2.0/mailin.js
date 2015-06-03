@@ -74,7 +74,7 @@ delete_request:function(resource,input) {
 	return this.post_request("campaign/" + id + "/report",JSON.stringify({"lang":lang,"email_subject":email_subject,"email_to":email_to,"email_content_type":email_content_type,"email_bcc":email_bcc,"email_cc":email_cc,"email_body":email_body}));
 }
 ,campaign_recipients_export:function(id,notify_url,type) {
-	return this.post_request("campaign/" + id + "/report",JSON.stringify({"notify_url":notify_url,"type":type}));
+	return this.post_request("campaign/" + id + "/recipients",JSON.stringify({"notify_url":notify_url,"type":type}));
 }
 ,send_bat_email:function(campid,email_to) {
     return this.post_request("campaign/" + campid + "/test",JSON.stringify({"emails":email_to}));
