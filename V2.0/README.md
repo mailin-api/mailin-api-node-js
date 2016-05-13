@@ -10,9 +10,10 @@ This is the official SendinBlue Node.js library, that can be easily integrated i
 2. Our library supports a timeout value, default is 30,000 MS ( 30 secs ), which you can pass as 3rd parameter in Mailin class Object.
 
 3. Assuming that you have cloned this git repo, or downloaded mailin.js . You can use this small sample script to get started
+
 ```javascript
 require("../mailin.js");
-var client = new Mailin("https://api.sendinblue.com/v2.0","<access key>",5);	//Optional parameter: Timeout in MS
+var client = new Mailin("https://api.sendinblue.com/v2.0","<access key>",5000);	//Optional parameter: Timeout in MS
 
 data = { "type":"classic",
 	"status":"queued",
