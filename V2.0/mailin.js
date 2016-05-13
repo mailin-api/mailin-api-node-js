@@ -1,14 +1,20 @@
 var rest = require('restler');
 
-Mailin = rest.service(function(base_url,api_key) {
+Mailin = rest.service(function(base_url,api_key,timeout) {
 	this.base_url = base_url;
 	this.api_key = api_key;
+	this.timeout = timeout;
 },{},{
 	do_request:function(resource,method,input) {
 		var called_url = this.base_url + "/" + resource;
 		var content_type = "application/json";
+
+		this.timeout = this.timeout!=null ? this.timeout: 30000; //default timeout: 30 secs
+		if(this.timeout!=null && (this.timeout <= 0 || this.timeout > 60000))
+			throw new Error('value not allowed for timeout')
+
 		// Make the call
-		return this.request(called_url,{method:method,headers:{'api-key':this.api_key,"content-type":content_type},data:input});
+		return this.request(called_url,{method:method, timeout: this.timeout, headers:{'api-key':this.api_key,"content-type":content_type},data:input});
 	},
 	get_request:function(resource,input) {
 		return this.do_request(resource,"GET",input);

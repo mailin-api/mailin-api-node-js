@@ -7,10 +7,12 @@ This is the official SendinBlue Node.js library, that can be easily integrated i
 
 1. You will need to first get the Access key from [SendinBlue](https://www.sendinblue.com).
 
-2. Assuming that you have cloned this git repo, or downloaded mailin.js . You can use this small sample script to get started
+2. Our library supports a timeout value, default is 30,000 MS ( 30 secs ), which you can pass as 3rd parameter in Mailin class Object.
+
+3. Assuming that you have cloned this git repo, or downloaded mailin.js . You can use this small sample script to get started
 ```javascript
 require("../mailin.js");
-var client = new Mailin("https://api.sendinblue.com/v2.0","<access key>");
+var client = new Mailin("https://api.sendinblue.com/v2.0","<access key>",5);	//Optional parameter: Timeout in MS
 
 data = { "type":"classic",
 	"status":"queued",
@@ -23,7 +25,7 @@ client.get_campaigns_v2(data).on('complete', function(data) {
 });
 ```
 
-3. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
+4. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
 
 ## Available functions
 
