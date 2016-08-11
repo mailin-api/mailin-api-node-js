@@ -4,6 +4,8 @@ This is the Sendinblue Node.js library. It implements the various exposed APIs t
 
 SendinBlue API's use HTTP Authentication through an api key. You can create your api key from [API Console](https://my.sendinblue.com/advanced/apikey), after you sign up for an account with SendinBlue. You must use latest version 2.0, access key, for accessing APIs.
 
+####NOTE:
+We recommend you to use our official [SendinBlue NPM](https://www.npmjs.com/package/sendinblue-api) package.
 
 ## Quickstart Guide
 
