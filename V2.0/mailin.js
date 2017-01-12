@@ -587,7 +587,7 @@ Mailin = rest.service(function(base_url,api_key,timeout) {
 	*/
 	get_user:function(data) {
 		id = data['email'];
-		return this.get_request("user/" + id,"");
+		return this.get_request("user/" + encodeURIComponent(id),"");
 	},
 
 	/*
@@ -597,7 +597,7 @@ Mailin = rest.service(function(base_url,api_key,timeout) {
 	*/
 	delete_user:function(data) {
 		id = data['email'];
-		return this.delete_request("user/" + id,"");
+		return this.delete_request("user/" + encodeURIComponent(id),"");
 	},
 
 	/*
